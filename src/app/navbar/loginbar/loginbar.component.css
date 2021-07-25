@@ -1,0 +1,29 @@
+.topnav {
+
+    background-color:#0d47a1;
+    display: flex;
+
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+
+.logoutbutton{
+
+    font: bold;
+    font-size: 20px;
+    color: rgb(235, 238, 240);
+}
+  
+ h1{
+  
+    font: bold;
+    font-size: 30px;
+    font-family:Arial, Helvetica, sans-serif;
+    color: rgb(235, 238, 240);
+    margin: left;
+    vertical-align:middle;
+  
+}

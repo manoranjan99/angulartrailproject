@@ -1,0 +1,160 @@
+
+
+
+<div class="registerpage">
+
+  <app-titlebar></app-titlebar>
+
+  <mat-card class="signup">
+
+
+    <form [formGroup]="loginform" (ngSubmit)="OnSubmit()">
+    
+     <table >
+      
+        <tr>
+          <td>
+          <h2>Signup</h2>
+          </td>
+        </tr>
+    
+    
+        <tr>
+        
+        <td> <mat-form-field appearance="fill"> <mat-label>Firstname</mat-label> <input matInput type="text" formControlName="firstname" ></mat-form-field> </td>
+        <td> <mat-form-field appearance="fill"> <mat-label>Lastname</mat-label> <input matInput type="text" formControlName="lastname" ></mat-form-field> </td>
+        </tr>
+    
+    
+       <tr>
+       <td>
+    
+        <mat-form-field appearance="fill">
+          <mat-label>Gender</mat-label>
+          <mat-select  formControlName="gender" >
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+            <mat-option value="Transgender">Transgender</mat-option>
+            <mat-option value="NTD">Prefer not to disclose</mat-option>
+          </mat-select>
+          
+        </mat-form-field>
+    
+       </td>
+    
+       <td> 
+          
+          <mat-form-field  appearance="fill"> <mat-label>Phonenumber</mat-label> <input matInput type="tel" formControlName="phonenumber" ></mat-form-field> 
+      
+       </td>
+    
+      
+      </tr>
+      
+      
+      
+      <tr>
+    
+         <td>       
+          
+    
+        </td>
+    
+        <td>       
+         <div *ngIf="loginform.get('phonenumber').touched && loginform.get('phonenumber').invalid" class="alert alert-danger">  
+          <mat-error class="error" *ngIf="loginform.get('phonenumber').errors.required">Mobile Number is required.</mat-error>
+          <mat-error class="error" *ngIf="loginform.get('phonenumber').errors.pattern">Enter 10 digit Mobile Number.</mat-error>
+         </div>  
+        </td>
+      </tr>
+      
+      
+      
+      <tr> 
+          <mat-form-field style="width: 200%;" appearance="fill"> <mat-label>Email</mat-label> <input matInput type="email" formControlName="email" ></mat-form-field> 
+    
+          <div class="form-group" [class.has-error]="!loginform.get('email').valid && loginform.get('email').touched" [class.has-success]="loginform.get('email').valid">
+    
+            <mat-error  *ngIf="!loginform.get('email').valid && loginform.get('email').touched">
+                 Invalid Email
+            </mat-error>
+    
+          </div>
+          
+      </tr>
+      
+      
+      
+      <tr>
+    
+       <td>
+    
+       <mat-form-field appearance="fill"> <mat-label>Password</mat-label> <input matInput type="password"  [type]="hide ? 'password' : 'text'"  formControlName="password" >   
+       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> </mat-form-field> 
+    
+       </td>
+    
+    
+       <td>
+        <mat-form-field appearance="fill"> <mat-label>Confirm Password</mat-label> <input matInput type="password"  [type]="hide ? 'password' : 'text'" formControlName="confirmpassword" >  
+           <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+        </td>
+    
+      </tr>
+    
+    
+      <tr>
+    
+        <td>
+    
+          <div *ngIf="loginform.get('password').touched && loginform.get('password').invalid" class="alert alert-danger">
+            <mat-error  class="error"  *ngIf="loginform.get('password').errors.required">Password is required.  </mat-error>
+              <mat-error  class="error"  *ngIf="loginform.get('password').invalid">Password minimum length is 6.  </mat-error></div>
+    
+        </td>
+    
+        <mat-error class="error-msg" *ngIf="loginform.value.password != loginform.value.confirmpassword">Passwords don't match.</mat-error>
+    
+    
+        <td>
+    
+    
+        </td>
+    
+    
+    
+      </tr>
+    
+    
+    
+     <tr> 
+        <td>
+          <button mat-raised-button  (click)="onSave()" class="button">Register</button>
+        </td>
+    
+        <td>
+          <button mat-raised-button  (click)="onlogin()" class="button">LogIn(Already a user)</button>
+        </td>
+     </tr>
+      
+    
+     </table>
+    
+    </form>
+    
+    
+    
+  </mat-card>
+    
+    
+    
+</div>
+    
+      
+      
+      
+      
+      
+      
+      

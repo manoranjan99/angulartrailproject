@@ -1,0 +1,77 @@
+
+<div class="body">
+
+  <app-titlebar></app-titlebar>
+
+<mat-card >
+
+    <h2> LogIn </h2>
+
+  <form [formGroup]="userform" (ngSubmit)="OnSubmit()">
+    
+    <table >
+
+      <tr> 
+        <td>
+    
+          <mat-form-field appearance="fill"> <mat-label>Email</mat-label> <input matInput type="email" formControlName="emailenter" ></mat-form-field> 
+          
+          <div class="form-group" [class.has-error]="!userform.get('emailenter').valid && userform.get('emailenter').touched" [class.has-success]="userform.get('emailenter').valid">
+
+            <mat-error  *ngIf="!userform.get('emailenter').valid && userform.get('emailenter').touched">
+                 Invalid Email
+            </mat-error>
+          </div>
+        </td>
+      </tr>
+
+
+     <tr>
+     <td> 
+      <mat-form-field appearance="fill"> <mat-label>Password</mat-label> <input matInput type="password"  [type]="hide ? 'password' : 'text'"  formControlName="passwordenter" >  
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field> 
+
+     <div *ngIf="userform.get('passwordenter').touched && userform.get('passwordenter').invalid" class="alert alert-danger">
+       <mat-error  class="error"  *ngIf="userform.get('passwordenter').errors.required">Password is required.  </mat-error>
+     </div>
+
+     <mat-error >{{error}}</mat-error>
+
+     
+     </td>
+     </tr>
+
+
+
+    
+     <tr> 
+        <td>
+          <button mat-raised-button class="button">Log In</button>
+        </td>
+     </tr>
+      
+    
+    </table>
+    
+  </form>
+    
+    
+</mat-card>
+
+
+</div>
+    
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      
+
+
+
