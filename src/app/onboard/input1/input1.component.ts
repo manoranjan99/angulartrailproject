@@ -28,6 +28,7 @@ export class Input1Component implements OnInit {
   Lastname:string='';
   email:any='';
   Gender:string='';
+  Userprofile:string='';
   Phonenumber:string='';
   Password:string='';
   confirmpassword:string=' ';
@@ -43,6 +44,7 @@ export class Input1Component implements OnInit {
      this.loginform=new FormGroup({
        firstname: new FormControl(),
        lastname:new FormControl(),
+       userprofile:new FormControl('',[Validators.required]),
        email:new FormControl('',
         [Validators.required,Validators.email,
         Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
@@ -60,14 +62,12 @@ export class Input1Component implements OnInit {
   OnSubmit():void
   {
 
-    if(this.loginform.get('password')?.value!="" && this.loginform.get('email')?.value!="" && this.loginform.get('phonenumber')?.value!="")
+    if(this.loginform.get('password')?.value!="" && this.loginform.get('email')?.value!="" && this.loginform.get('phonenumber')?.value!="" && this.loginform.get('userprofile')?.value)
     {
 
       this.obj=new profilemodel(this.loginform.get('firstname')?.value,this.loginform.get('lastname')?.value,this.loginform.get('gender')?.value,
-      this.loginform.get('phonenumber')?.value,this.loginform.get('email')?.value,this.loginform.get('password')?.value);
-
+      this.loginform.get('phonenumber')?.value,this.loginform.get('email')?.value,this.loginform.get('password')?.value,this.loginform.get('userprofile')?.value);
       this.addregister();
-
       alert("Your response has been registered");
 
     }else{

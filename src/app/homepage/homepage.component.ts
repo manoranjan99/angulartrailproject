@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { observable, Observable, Subscriber } from 'rxjs';
 import { TitlebarComponent } from '../navbar/titlebar/titlebar.component';
 @Component({
   selector: 'app-homepage',
@@ -8,12 +9,27 @@ import { TitlebarComponent } from '../navbar/titlebar/titlebar.component';
 export class HomepageComponent implements OnInit {
 
 
-  name:string=" ";
+  name:any=" ";
 
-  constructor() { }
+  constructor() { 
+   
+    const test$=new Observable(Subscriber => {
+
+      console.log(observable)
+     
+      Subscriber.next(localStorage.getItem("Token"));
+  
+    } );
+
+
+    test$.subscribe( x=> (this.name=x));
+
+
+
+  }
 
   ngOnInit(): void {
-    this.name=localStorage.getItem("Token");
+
 
   }
 

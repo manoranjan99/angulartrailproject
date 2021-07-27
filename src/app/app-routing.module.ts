@@ -3,11 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthguardGuard } from './onboard/authguard.guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { DeactivateGuard } from './deactivate.guard';
+import { AdminpageComponent } from './adminpage/adminpage.component';
 
 
 const routes: Routes = [
   {path:'register', loadChildren:()=>import('./onboard/onboard.module').then(mod=>mod.OnboardModule)},
   {path: 'home', component:HomepageComponent,canActivate: [AuthguardGuard],canDeactivate: [DeactivateGuard] },
+  {path: 'admin', component:AdminpageComponent,canActivate: [AuthguardGuard],canDeactivate: [DeactivateGuard] },
+
 ];
 
 @NgModule({

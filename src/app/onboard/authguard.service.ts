@@ -31,7 +31,11 @@ export class AuthguardService {
 
           this.authfunction(true);
           localStorage.setItem("Token",element.Firstname+" "+element.Lastname);
-          this.router.navigateByUrl('/home');
+          if(element.UserProfile=="Customer")
+            this.router.navigateByUrl('/home');
+          else{
+            this.router.navigateByUrl('/admin')
+          }
           return "Login successfull";
 
      }else{
@@ -42,8 +46,6 @@ export class AuthguardService {
     });
 
     return "Your Email or Password is incorrect";
-
-
 
   }
 

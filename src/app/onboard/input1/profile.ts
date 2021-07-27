@@ -7,9 +7,12 @@ export class profilemodel
     Phonenumber:string;
     Email:string;
     Password:string;
+    UserProfile:string;
 
 
-    constructor(firstname:string,lastname:string,gender:string,phonenumber:string,email:string,password:string){
+
+
+    constructor(firstname:string,lastname:string,gender:string,phonenumber:string,email:string,password:string,userprofile:string){
 
         this.Firstname=firstname;
         this.Lastname=lastname;
@@ -17,6 +20,7 @@ export class profilemodel
         this.Phonenumber=phonenumber;
         this.Email=email;
         this.Password=password;
+        this.UserProfile=userprofile;
 
     }
 
@@ -49,6 +53,13 @@ export class profilemodel
 
         return this.Password;
     }
+
+
+    get getuserprofile():string{
+
+        return this.UserProfile;
+    }
+
 
 
 

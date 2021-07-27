@@ -7,7 +7,6 @@
 
   <mat-card class="signup">
 
-
     <form [formGroup]="loginform" (ngSubmit)="OnSubmit()">
     
      <table >
@@ -37,7 +36,6 @@
             <mat-option value="Transgender">Transgender</mat-option>
             <mat-option value="NTD">Prefer not to disclose</mat-option>
           </mat-select>
-          
         </mat-form-field>
     
        </td>
@@ -47,40 +45,71 @@
           <mat-form-field  appearance="fill"> <mat-label>Phonenumber</mat-label> <input matInput type="tel" formControlName="phonenumber" ></mat-form-field> 
       
        </td>
-    
-      
+
+       
       </tr>
       
       
       
       <tr>
+
+        <td> 
+
+        </td>
     
          <td>       
-          
+          <div *ngIf="loginform.get('phonenumber').touched && loginform.get('phonenumber').invalid" class="alert alert-danger">  
+            <mat-error class="error" *ngIf="loginform.get('phonenumber').errors.required">Mobile Number is required.</mat-error>
+            <mat-error class="error" *ngIf="loginform.get('phonenumber').errors.pattern">Enter 10 digit Mobile Number.</mat-error>
+           </div>  
     
         </td>
-    
-        <td>       
-         <div *ngIf="loginform.get('phonenumber').touched && loginform.get('phonenumber').invalid" class="alert alert-danger">  
-          <mat-error class="error" *ngIf="loginform.get('phonenumber').errors.required">Mobile Number is required.</mat-error>
-          <mat-error class="error" *ngIf="loginform.get('phonenumber').errors.pattern">Enter 10 digit Mobile Number.</mat-error>
-         </div>  
-        </td>
+  
       </tr>
       
       
       
       <tr> 
-          <mat-form-field style="width: 200%;" appearance="fill"> <mat-label>Email</mat-label> <input matInput type="email" formControlName="email" ></mat-form-field> 
-    
+        <td>
+          <mat-form-field appearance="fill"> <mat-label>Email</mat-label> <input matInput type="email" formControlName="email" ></mat-form-field> 
+        </td>
+
+        <td>
+
+            <mat-form-field appearance="fill">
+             <mat-label>Profile</mat-label>
+             <mat-select  formControlName="userprofile" >
+               <mat-option value="Admin">Admin</mat-option>
+               <mat-option value="Customer">Customer</mat-option>
+             </mat-select>
+            </mat-form-field>
+
+        </td>
+          
+      </tr>
+
+
+      <tr>
+
+        <td>
           <div class="form-group" [class.has-error]="!loginform.get('email').valid && loginform.get('email').touched" [class.has-success]="loginform.get('email').valid">
-    
             <mat-error  *ngIf="!loginform.get('email').valid && loginform.get('email').touched">
                  Invalid Email
             </mat-error>
-    
           </div>
-          
+        </td>
+
+        <td>
+
+          <div class="form-group" [class.has-error]="!loginform.get('userprofile').valid && loginform.get('userprofile').touched" [class.has-success]="loginform.get('email').valid">
+            <mat-error  *ngIf="!loginform.get('userprofile').valid && loginform.get('userprofile').touched">
+                 Profile is required!
+            </mat-error>
+          </div>
+         
+        </td>
+
+
       </tr>
       
       
@@ -109,12 +138,12 @@
         <td>
     
           <div *ngIf="loginform.get('password').touched && loginform.get('password').invalid" class="alert alert-danger">
-            <mat-error  class="error"  *ngIf="loginform.get('password').errors.required">Password is required.  </mat-error>
-              <mat-error  class="error"  *ngIf="loginform.get('password').invalid">Password minimum length is 6.  </mat-error></div>
+          <mat-error  class="error"  *ngIf="loginform.get('password').errors.required">Password is required.  </mat-error>
+          <mat-error  class="error"  *ngIf="loginform.get('password').invalid">Password minimum length is 6.  </mat-error></div>
     
         </td>
     
-        <mat-error class="error-msg" *ngIf="loginform.value.password != loginform.value.confirmpassword">Passwords don't match.</mat-error>
+        <mat-error class="error-msg" *ngIf="loginform.value.password != loginform.value.confirmpassword">Passwords didn't match.</mat-error>
     
     
         <td>
@@ -142,13 +171,9 @@
      </table>
     
     </form>
-    
-    
-    
+
   </mat-card>
-    
-    
-    
+       
 </div>
     
       
